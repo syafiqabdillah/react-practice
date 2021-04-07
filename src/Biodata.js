@@ -1,10 +1,10 @@
 import React from "react";
 import "./Biodata.css";
-import Name from "./components/Name";
+import Name from "@components/Name";
 import Photo from "@components/Photo";
-import Address from "./components/Address";
-import Age from "./components/Age";
-import RandomizeButton from "./components/RandomizeButton";
+import Address from "@components/Address";
+import Age from "@components/Age";
+import Button from "@components/Button";
 
 class Biodata extends React.Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class Biodata extends React.Component {
           <Name fullname={this.state.currentPerson.fullname} />
           <Age age={this.state.currentPerson.age} />
           <Address address={this.state.currentPerson.address} />
-          <RandomizeButton handleClick={this.randomizePerson} />
+          <Button handleClick={this.randomizePerson} text="randomize" />
         </div>
       );
     } else {
