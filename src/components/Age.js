@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./styles/Age.css";
+import PropTypes from 'prop-types'
+
 
 class Age extends Component {
   constructor(props) {
@@ -9,6 +11,10 @@ class Age extends Component {
   render() {
     return <div className="age">{this.props.age} years old</div>;
   }
+}
+
+Age.propTypes = {
+  age: PropTypes.number
 }
 
 export default Age;

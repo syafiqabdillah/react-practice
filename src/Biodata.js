@@ -1,10 +1,6 @@
 import React from "react";
 import "./Biodata.css";
-import Name from "./components/Name";
-import Photo from "@components/Photo";
-import Address from "./components/Address";
-import Age from "./components/Age";
-import RandomizeButton from "./components/RandomizeButton";
+import BiodataContainer from "./BiodataContainer";
 
 class Biodata extends React.Component {
   constructor(props) {
@@ -78,12 +74,14 @@ class Biodata extends React.Component {
     let content;
     if (this.state.currentPerson) {
       content = (
-        <div className="biodata">
-          <Photo src={this.state.currentPerson.src} />
-          <Name fullname={this.state.currentPerson.fullname} />
-          <Age age={this.state.currentPerson.age} />
-          <Address address={this.state.currentPerson.address} />
-          <RandomizeButton handleClick={this.randomizePerson} />
+        <div>
+          <BiodataContainer
+            src={this.state.currentPerson.src}
+            fullname={this.state.currentPerson.fullname}
+            age={this.state.currentPerson.age}
+            address={this.state.currentPerson.address}
+            randomizePerson={this.randomizePerson}
+          />
         </div>
       );
     } else {
