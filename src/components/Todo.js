@@ -1,7 +1,11 @@
-import "./styles/Todo.css"
+import "./styles/Todo.css";
 import React from "react";
 import { connect } from "react-redux";
-import { addItem, removeItem } from "../redux/ToNotDoList/tonotdolist.actions";
+import {
+  addItem,
+  removeItem,
+  toggleDone,
+} from "../redux/ToNotDoList/tonotdolist.actions";
 
 class Todo extends React.Component {
   constructor(props) {
@@ -12,21 +16,26 @@ class Todo extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleToggleDone = this.handleToggleDone.bind(this);
   }
 
   handleInputChange(e) {
     const target = e.target;
     this.setState({
-      newItem: target.value
-    })
+      newItem: target.value,
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.newItem.length > 0) {
       this.clearForm();
-      this.props.addItem(this.state.newItem);
+      this.props.addItem({ name: this.state.newItem, done: false });
     }
+  }
+
+  handleToggleDone(index) {
+    this.props.toggleDone({index});
   }
 
   handleDelete(deletedItem) {
@@ -38,11 +47,17 @@ class Todo extends React.Component {
     document.getElementById("form").reset();
   }
 
+  isDone(item) {
+    return item.done ? " done": ""
+  }
+
   render() {
-    const list = this.props.tonotdolist.map((item) => {
+    const list = this.props.tonotdolist.map((item, index) => {
       return (
-        <li key={item}>
-          {item}
+        <li key={item.name}>
+          <div className={"name" + this.isDone(item)} onClick={(e) => this.handleToggleDone(index, e)}>
+            {item.name}
+          </div>
           <button onClick={(e) => this.handleDelete(item, e)}>x</button>
         </li>
       );
@@ -81,6 +96,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addItem: (payload) => dispatch(addItem(payload)),
     removeItem: (payload) => dispatch(removeItem(payload)),
+    toggleDone: (payload) => dispatch(toggleDone(payload)),
   };
 };
 
