@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Biodata.css";
+import styles from "./styles/Biodata.module.css";
 import Photo from "@components/Photo";
 import Name from "@components/Name";
 import Age from "@components/Age";
@@ -17,7 +17,7 @@ class Biodata extends React.Component {
     let content;
     if (this.props.currentPerson) {
       content = (
-        <div className="biodata">
+        <div className={styles.biodata}>
           <Photo src={this.props.currentPerson.src} />
           <Name fullname={this.props.currentPerson.fullname} />
           <Age age={this.props.currentPerson.age} />
@@ -28,7 +28,7 @@ class Biodata extends React.Component {
     } else {
       content = null;
     }
-    return <div className="container">{content}</div>;
+    return <div>{content}</div>;
   }
 }
 

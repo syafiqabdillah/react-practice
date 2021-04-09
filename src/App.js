@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import React from "react";
 import Todo from "@components/Todo";
 import Biodata from "@components/Biodata";
@@ -11,7 +11,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className={styles.container}>
         <Todo />
         <Biodata />
       </div>

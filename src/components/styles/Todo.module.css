@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background-color: #efefef;
+  margin-bottom: 5em;
 }
 .card {
   width: 400px;
@@ -24,14 +24,14 @@ li {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1em;
-  /* box-shadow: 0 0 2em rgba(25, 39, 80, 0.15); */
   border: 1px solid lightblue;
   border-radius: 5px;
   margin: 0 0 0.5em;
   text-transform: capitalize;
 }
-li > div.done {
+.done {
   text-decoration: line-through;
 }
 li button {

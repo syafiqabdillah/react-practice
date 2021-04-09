@@ -1,4 +1,4 @@
-import "./styles/Todo.css";
+import styles from "./styles/Todo.module.css";
 import React from "react";
 import { connect } from "react-redux";
 import {
@@ -55,7 +55,7 @@ class Todo extends React.Component {
     const list = this.props.tonotdolist.map((item, index) => {
       return (
         <li key={item.name}>
-          <div className={"name" + this.isDone(item)} onClick={(e) => this.handleToggleDone(index, e)}>
+          <div className={item.done ? styles.done : ""} onClick={(e) => this.handleToggleDone(index, e)}>
             {item.name}
           </div>
           <button onClick={(e) => this.handleDelete(item, e)}>x</button>
@@ -64,14 +64,14 @@ class Todo extends React.Component {
     });
 
     return (
-      <div className="container">
-        <div className="card">
-          <h2 className="title">To-Not-Do-List</h2>
-          <div className="list">
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <h2 className={styles.title}>To-Not-Do-List</h2>
+          <div className={styles.li}>
             <ul>{list}</ul>
           </div>
 
-          <form id="form" className="inputs" onSubmit={this.handleSubmit}>
+          <form id="form" className={styles.inputs} onSubmit={this.handleSubmit}>
             <input
               name="newItem"
               type="text"
