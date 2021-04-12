@@ -2,11 +2,12 @@ import styles from "./App.module.css";
 import React from "react";
 import Todo from "@components/Todo";
 import Biodata from "@components/Biodata";
+import DadJokes from "@components/DadJokes";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
@@ -14,6 +15,7 @@ class App extends React.Component {
       <div className={styles.container}>
         <Todo />
         <Biodata />
+        <DadJokes />
       </div>
     );
   }
