@@ -1,3 +1,7 @@
+:root {
+  --primary: #1c2b51;
+  --accent: #F55D25;
+}
 .container {
   padding: 3em 5em;
   display: flex;
@@ -14,11 +18,14 @@
 .navigation li {
   list-style: none;
 }
+.navigation li a:hover {
+  color: var(--accent);
+}
 .navigation li a {
   text-decoration: none;
   margin: 0 1em;
   text-transform: capitalize;
-  color: #1c2b51;
+  color: var(--primary);
 }
 .active {
   font-weight: bold;
