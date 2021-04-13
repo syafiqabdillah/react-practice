@@ -2,8 +2,27 @@
   padding: 3em 5em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   background-color: #efefef;
+}
+.navigation {
+  display: flex;
+  margin: 5em 0;
+}
+.navigation li {
+  list-style: none;
+}
+.navigation li a {
+  text-decoration: none;
+  margin: 0 1em;
+  text-transform: capitalize;
+  color: #1c2b51;
+}
+.active {
+  font-weight: bold;
+}
+.navigation li a:hover {
+  text-decoration: underline;
 }

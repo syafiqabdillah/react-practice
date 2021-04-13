@@ -5,3 +5,7 @@ export const fetchDadJoke = () => {
         type: FETCH_DAD_JOKE
     }
 }
+
+// success
+
+// failed 

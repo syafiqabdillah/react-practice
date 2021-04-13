@@ -54,7 +54,7 @@ class Todo extends React.Component {
   render() {
     const list = this.props.tonotdolist.map((item, index) => {
       return (
-        <li key={item.name}>
+        <li key={item.name} className={styles.li}>
           <div className={item.done ? styles.done : ""} onClick={(e) => this.handleToggleDone(index, e)}>
             {item.name}
           </div>
@@ -67,7 +67,7 @@ class Todo extends React.Component {
       <div className={styles.container}>
         <div className={styles.card}>
           <h2 className={styles.title}>To-Not-Do-List</h2>
-          <div className={styles.li}>
+          <div>
             <ul>{list}</ul>
           </div>
 
