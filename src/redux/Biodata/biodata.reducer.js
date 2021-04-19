@@ -1,7 +1,9 @@
-import { RANDOMIZE } from "./biografi.types";
+import { RANDOMIZE } from "./biodata.types";
+import { fromJS } from "immutable";
 
-const INITIAL_STATE = {
+const INITIAL_STATE = fromJS({
   currentPerson: {},
+  theme: "blue",
   persons: [
     {
       fullname: "Craig Berry",
@@ -35,24 +37,40 @@ const INITIAL_STATE = {
       src: "images/person5.jpg",
     },
   ],
-};
+});
 
-function getRandomPerson() {
-  return INITIAL_STATE.persons[
-    Math.floor(Math.random() * INITIAL_STATE.persons.length)
-  ];
+function samePerson(currentPerson, newPerson) {
+  if (currentPerson) {
+    return currentPerson.get("fullname") === newPerson.get("fullname");
+  }
+  return false;
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+function getOneItem(array) {
+  return array.get(Math.floor(Math.random() * array.size));
+}
+
+function getRandomPerson() {
+  const persons = INITIAL_STATE.get("persons");
+  let newPerson = getOneItem(persons);
+  return newPerson;
+}
+
+function biodataReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case RANDOMIZE:
-      return {
-        ...state,
-        currentPerson: getRandomPerson(),
-      };
+      let newPerson = getRandomPerson();
+      const currentPerson = state.get("currentPerson");
+      const theme = state.get("theme");
+      while (samePerson(currentPerson, newPerson)) {
+        newPerson = getRandomPerson();
+      }
+      return state
+        .set("currentPerson", newPerson)
+        .set("theme", theme === "blue" ? "red" : "blue");
     default:
       return state;
   }
-};
+}
 
-export default reducer;
+export default biodataReducer;

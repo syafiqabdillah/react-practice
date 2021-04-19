@@ -1,14 +1,21 @@
-import React, { Component } from "react";
-import "./styles/Button.css";
+import styled from "styled-components";
 
-class Button extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+const Button = styled.button`
+  width: 100%;
+  height: 40px;
+  margin: 1rem 0 0;
+  background-color: ${props => props.bg};
+  font-size: 1.25rem;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  &:focus {
+    outline: none;
   }
-  render() {
-    return <button onClick={this.props.handleClick}>{this.props.text}</button>;
+  &:hover {
+    background-color: ${props => props.bgHover};
+    cursor: pointer;
   }
-}
-
+`;
 export default Button;

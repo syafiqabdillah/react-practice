@@ -1,4 +1,4 @@
-import { RANDOMIZE } from "./biografi.types"
+import { RANDOMIZE } from "./biodata.types"
 
 export const randomize = () => {
   return {
