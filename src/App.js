@@ -3,6 +3,8 @@ import React from "react";
 import Todo from "@components/Todo";
 import Biodata from "@components/Biodata";
 import DadJokes from "@components/DadJokes";
+import { Helmet } from 'react-helmet'
+
 import {
   Switch,
   Route,
@@ -24,6 +26,11 @@ class App extends React.Component {
     }
     return (
       <Router>
+        <Helmet>
+          <title>
+            React Practice
+          </title>
+        </Helmet>
         <div className={styles.container}>
           <ul className={styles.navigation}>
             <li>

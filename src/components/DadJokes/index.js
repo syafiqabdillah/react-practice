@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import React from "react";
 import { connect } from "react-redux";
 import { fetchDadJoke } from "../../redux/DadJokes/dadjokes.actions";
+import { Helmet } from "react-helmet";
 
 class DadJokes extends React.Component {
   componentDidMount() {
@@ -10,6 +11,10 @@ class DadJokes extends React.Component {
 
   render() {
     return (
+      <>
+      <Helmet>
+        <title>Dad Jokes</title>
+      </Helmet>
       <div
         className={styles.dadJokes}
         onClick={() => {
@@ -19,15 +24,12 @@ class DadJokes extends React.Component {
         <h1 className={styles.title}>👴 Daily Dose of Dad Jokes</h1>
         <hr />
         <div className="joke">{this.props.joke}</div>
-        {
-          this.props.loadingJoke && "Loading..."
-        }
-        {
-          this.props.showJokeError && (
-            <small className={styles.error}>Error loading joke</small>
-          )
-        }
+        {this.props.loadingJoke && "Loading..."}
+        {this.props.showJokeError && (
+          <small className={styles.error}>Error loading joke</small>
+        )}
       </div>
+      </>
     );
   }
 }
@@ -36,7 +38,7 @@ const mapStateToProps = (state) => {
   return {
     joke: state.dadjokes.joke,
     loadingJoke: state.dadjokes.loadingJoke,
-    showJokeError: state.dadjokes.showJokeError
+    showJokeError: state.dadjokes.showJokeError,
   };
 };
 

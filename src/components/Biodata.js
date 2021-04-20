@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { randomize } from "../redux/Biodata/biodata.actions";
 import makeSelectBiodata from "./selectors";
 import { createStructuredSelector } from "reselect";
+import { Helmet } from 'react-helmet'
 
 class Biodata extends React.Component {
   componentDidMount() {
@@ -34,7 +35,14 @@ class Biodata extends React.Component {
     } else {
       content = null;
     }
-    return <div>{content}</div>;
+    return (
+      <>
+      <Helmet>
+        <title>Biodata</title>
+      </Helmet>
+      <div>{content}</div>
+      </>
+    );
   }
 }
 
