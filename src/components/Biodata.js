@@ -12,7 +12,8 @@ import { createStructuredSelector } from "reselect";
 
 class Biodata extends React.Component {
   componentDidMount() {
-    this.props.randomize();
+    if (this.props.biodata.currentPerson.fullname === undefined)
+      this.props.randomize();
   }
 
   render() {
