@@ -1,20 +1,25 @@
 import React from "react";
-import styles from "./styles/Biodata.module.css";
-import Photo from "@components/Photo";
-import Name from "@components/Name";
-import Age from "@components/Age";
-import Address from "@components/Address";
-import RandomizeButton from "@components/RandomizeButton";
-import { connect } from "react-redux";
-import { randomize } from "../redux/Biodata/biodata.actions";
-import makeSelectBiodata from "./selectors";
-import { createStructuredSelector } from "reselect";
 import { Helmet } from 'react-helmet'
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
+import styles from "../styles/Biodata.module.css";
+
+import Photo from "./components/Photo";
+import Name from "./components/Name";
+import Age from "./components/Age";
+import Address from "./components/Address";
+import RandomizeButton from "./components/RandomizeButton";
+
+import { randomize } from "./actions";
+import makeSelectBiodata from "../selectors";
 
 class Biodata extends React.Component {
   componentDidMount() {
     if (this.props.biodata.currentPerson.fullname === undefined)
       this.props.randomize();
+
+    console.log('jontor')
   }
 
   render() {

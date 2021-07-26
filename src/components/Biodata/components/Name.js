@@ -1,4 +1,4 @@
-import "./styles/Name.css";
+import "../styles/Name.css";
 
 function FullName(props) {
   return <div className="fullname">{props.fullname}</div>;

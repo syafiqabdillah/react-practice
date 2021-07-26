@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles/Address.css";
+import "../styles/Address.css";
 
 class Address extends Component {
   constructor(props) {

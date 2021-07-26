@@ -12,23 +12,23 @@ class DadJokes extends React.Component {
   render() {
     return (
       <>
-      <Helmet>
-        <title>Dad Jokes</title>
-      </Helmet>
-      <div
-        className={styles.dadJokes}
-        onClick={() => {
-          this.props.fetchDadJoke();
-        }}
-      >
-        <h1 className={styles.title}>👴 Daily Dose of Dad Jokes</h1>
-        <hr />
-        <div className="joke">{this.props.joke}</div>
-        {this.props.loadingJoke && "Loading..."}
-        {this.props.showJokeError && (
-          <small className={styles.error}>Error loading joke</small>
-        )}
-      </div>
+        <Helmet>
+          <title>Daily Dad Jokes</title>
+        </Helmet>
+        <div
+          className={styles.dadJokes}
+          onClick={() => {
+            this.props.fetchDadJoke();
+          }}
+        >
+          <h1 className={styles.title}>👴 Daily Dose of Dad Jokes</h1>
+          <hr />
+          <div className="joke">{this.props.joke}</div>
+          {this.props.loadingJoke && "Loading..."}
+          {this.props.showJokeError && (
+            <small className={styles.error}>Error loading joke</small>
+          )}
+        </div>
       </>
     );
   }
